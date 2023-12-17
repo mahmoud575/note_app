@@ -12,6 +12,7 @@ class CustomTextField extends StatelessWidget {
     return TextField(
       maxLines: maxLines,
       cursorColor: kPrimaryColor,
+      textAlignVertical: TextAlignVertical.bottom,
       decoration: InputDecoration(
         hintText: hint,
         enabledBorder: buildBorder(),
