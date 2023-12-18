@@ -55,10 +55,10 @@ class _AddNoteFormState extends State<AddNoteForm> {
               subTitle = value;
             },
             hint: 'Content',
-            maxLines: 6,
+            maxLines: 7,
           ),
           const SizedBox(
-            height: 32,
+            height: 120,
           ),
           CustomButton(
             onTap: ()
