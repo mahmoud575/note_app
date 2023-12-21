@@ -7,7 +7,8 @@ import 'custom_text_field.dart';
 
 class EditNoteScreenBody extends StatefulWidget {
   const EditNoteScreenBody({
-    super.key, required this.note,
+    super.key,
+    required this.note,
   });
 
   final NoteModel note;
@@ -17,49 +18,49 @@ class EditNoteScreenBody extends StatefulWidget {
 }
 
 class _EditNoteScreenBodyState extends State<EditNoteScreenBody> {
+  String? title, content;
 
-   String? title , content;
   @override
   Widget build(BuildContext context) {
-    return  SafeArea(
+    return SafeArea(
       child: Scaffold(
           body: Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
-            child: Column(
-              children: [
-                CustomAppbar(
-                  onTap: (){
-                    widget.note.title = title ?? widget.note.title;
-                    widget.note.subTitle = content ?? widget.note.subTitle;
-                    widget.note.save();
-                    BlocProvider.of<NoteCubit>(context).fetchAllNotes();
-                    Navigator.pop(context);
-                  },
-                  titleName: 'Edit Note',
-                  icon: Icons.check,
-                ),
-                const SizedBox(
-                  height: 32,
-                ),
-                 CustomTextField(
-                  onChanged: (value){
-                    title = value;
-                  },
-                  hint: widget.note.title,
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                 CustomTextField(
-                  onChanged: (value) {
-                    content = value;
-                  },
-                  hint: widget.note.subTitle,
-                  maxLines: 8,
-                )
-              ],
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
+        child: Column(
+          children: [
+            CustomAppbar(
+              onTap: () {
+                widget.note.title = title ?? widget.note.title;
+                widget.note.subTitle = content ?? widget.note.subTitle;
+                widget.note.save();
+                BlocProvider.of<NoteCubit>(context).fetchAllNotes();
+                Navigator.pop(context);
+              },
+              titleName: 'Edit Note',
+              icon: Icons.check,
             ),
-          )),
+            const SizedBox(
+              height: 32,
+            ),
+            CustomTextField(
+              onChanged: (value) {
+                title = value;
+              },
+              hint: widget.note.title,
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            CustomTextField(
+              onChanged: (value) {
+                content = value;
+              },
+              hint: widget.note.subTitle,
+              maxLines: 8,
+            )
+          ],
+        ),
+      )),
     );
   }
 }
